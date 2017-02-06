@@ -1,0 +1,42 @@
+{
+  "name" : "phar-io/composer-plugin",
+  "type": "composer-plugin",
+  "description": "",
+  "license" : "BSD-3-Clause",
+  "authors" : [
+    {
+      "name" : "Arne Blankerts",
+      "email" : "arne@blankerts.de",
+      "role" : "Developer"
+    },
+    {
+      "name" : "Sebastian Heuer",
+      "email" : "sebastian@phpeople.de",
+      "role" : "Developer"
+    },
+    {
+      "name": "Tommy Muehle",
+      "email": "tommy.muehle@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "support" : {
+    "issues" : "https://github.com/phar-io/composer-plugin/issues",
+    "docs": "https://github.com/phar-io/composer-plugin/blob/master/README.md"
+  },
+  "require": {
+    "php" : ">=5.6.0",
+    "composer-plugin-api": "^1.0"
+  },
+  "require-dev": {
+    "composer/composer": "1.3.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "PharIo\\Composer\\": "src/"
+    }
+  },
+  "extra": {
+    "class": "PharIo\\Composer\\Plugin"
+  }
+}
