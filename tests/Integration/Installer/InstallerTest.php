@@ -17,5 +17,6 @@ class InstallerTest extends \PHPUnit_Framework_TestCase {
 
         $this->assertTrue(file_exists(__DIR__ . '/../../../bin/phive.phar'));
         $this->assertTrue(file_exists(__DIR__ . '/../../../bin/phive.phar.asc'));
+        $this->assertTrue(is_executable(__DIR__ . '/../../../bin/phive.phar'));
     }
 }
