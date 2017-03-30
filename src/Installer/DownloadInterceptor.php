@@ -1,4 +1,5 @@
 <?php
+
 namespace PharIo\Composer\Installer;
 
 use Composer\Downloader\DownloaderInterface;
@@ -32,14 +33,12 @@ class DownloadInterceptor {
     }
 
     /**
-     * @param PackageInterface $package
-     * @param string           $path
+     * @param PhivePackageInterface $package
      */
-    public function download(PackageInterface $package, $path) {
+    public function download(PhivePackageInterface $package) {
         $tmpFile = $this->downloader->download($package, sys_get_temp_dir());
-        $this->filesystem->rename($tmpFile, $path . '/' . basename($package->getDistUrl()));
+        $this->filesystem->rename($tmpFile, $package->getInstallationPath());
 
-        // be sure that phive.phar is executable
-        Silencer::call('chmod', $path . '/' . basename($package->getDistUrl()), 0777 & ~umask());
+        Silencer::call('chmod', $package->getInstallationPath(), 0777 & ~umask());
     }
 }

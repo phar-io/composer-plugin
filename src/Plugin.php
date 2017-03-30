@@ -1,4 +1,5 @@
 <?php
+
 namespace PharIo\Composer;
 
 use Composer\Composer;
@@ -8,7 +9,9 @@ use Composer\Plugin\Capable;
 use Composer\Plugin\PluginInterface;
 use Composer\Plugin\Capability\CommandProvider;
 use PharIo\Composer\Console\InfoCommand;
+use PharIo\Composer\Console\PhiveBinary;
 use PharIo\Composer\Console\RunCommand;
+use PharIo\Composer\Installer\Configuration;
 use PharIo\Composer\Installer\Installer;
 
 /**
@@ -22,20 +25,33 @@ class Plugin implements PluginInterface, Capable, CommandProvider {
      * @param IOInterface $io
      */
     public function activate(Composer $composer, IOInterface $io) {
-        if (file_exists(__DIR__ . '/../bin/phive.phar')) {
+        if (true === (new PhiveBinary())->exists()) {
             return;
         }
 
+        $options = [];
+        $extras = $composer->getPackage()->getExtra();
+
+        if (isset($extras['phar-io'])) {
+            $options = $extras['phar-io'];
+        }
+
         $installer = new Installer($composer, $io);
-        $installer->install();
+        $installer->install(new Configuration($options));
     }
 
+    /**
+     * @return array
+     */
     public function getCapabilities() {
         return [
             CommandProvider::class => self::class,
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getCommands() {
         return [
             new RunCommand,
