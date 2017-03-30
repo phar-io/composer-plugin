@@ -1,9 +1,10 @@
 <?php
+
 namespace PharIo\Composer\Installer;
 
 use Composer\Package\Package;
 
-class PhivePackage extends Package {
+class PhivePackage extends Package implements PhivePackageInterface {
 
     public function __construct() {
         parent::__construct('phive', 'latest', 'latest');
@@ -19,5 +20,12 @@ class PhivePackage extends Package {
 
     public function getInstallationSource() {
         return 'dist';
+    }
+
+    /**
+     * @return string
+     */
+    public function getInstallationPath() {
+        return __DIR__ . '/../../bin/' . basename($this->getDistUrl());
     }
 }

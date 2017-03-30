@@ -36,4 +36,8 @@ class PhivePackageTest extends \PHPUnit_Framework_TestCase {
     public function testCanGetInstallationSource() {
         $this->assertEquals('dist', $this->package->getInstallationSource());
     }
+
+    public function testCanGetInstallationPath() {
+        $this->assertContains('bin/phive.phar', $this->package->getInstallationPath());
+    }
 }

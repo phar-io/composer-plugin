@@ -36,4 +36,8 @@ class PhiveSignaturePackageTest extends \PHPUnit_Framework_TestCase {
     public function testCanGetInstallationSource() {
         $this->assertEquals('dist', $this->package->getInstallationSource());
     }
+
+    public function testCanGetInstallationPath() {
+        $this->assertContains('bin/phive.phar.asc', $this->package->getInstallationPath());
+    }
 }
