@@ -19,7 +19,7 @@ EOT
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
-        $phiveBinary = new PhiveBinary(__DIR__ . '/../../bin/phive.phar');
+        $phiveBinary = new PhiveBinary);
         $output->writeln('Path to Phive: ' . $phiveBinary);
     }
 }
