@@ -2,26 +2,11 @@
 
 namespace PharIo\Composer\Console;
 
-class PhiveBinary {
+use PharIo\FileSystem\Filename;
 
-    /**
-     * @var \SplFileInfo
-     */
-    private $file;
+class PhiveBinary extends Filename {
 
-    public function __construct($filename) {
-        $this->file = new \SplFileInfo($filename);
-
-        if (!$this->file->isFile()) {
-            throw PhiveBinaryException::notExist($this->file->getRealPath());
-        }
-
-        if (!$this->file->isExecutable()) {
-            throw PhiveBinaryException::notExecutable();
-        }
-    }
-
-    public function __toString() {
-        return $this->file->getRealPath();
+    public function __construct() {
+        parent::__construct(__DIR__ . '/../../bin/phive.phar');
     }
 }
