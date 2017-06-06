@@ -18,7 +18,7 @@ EOT
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
-        $phiveBinary = new PhiveBinary);
+        $phiveBinary = new PhiveBinary;
         $output->writeln('Path to Phive: ' . $phiveBinary);
     }
 }
