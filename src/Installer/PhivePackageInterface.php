@@ -1,5 +1,4 @@
 <?php
-
 namespace PharIo\Composer\Installer;
 
 use Composer\Package\PackageInterface;

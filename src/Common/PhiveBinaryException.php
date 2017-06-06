@@ -1,5 +1,4 @@
 <?php
-
 namespace PharIo\Composer\Common;
 
 final class PhiveBinaryException extends \RuntimeException {

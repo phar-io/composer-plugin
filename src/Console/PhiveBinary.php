@@ -1,5 +1,4 @@
 <?php
-
 namespace PharIo\Composer\Console;
 
 use PharIo\FileSystem\Filename;

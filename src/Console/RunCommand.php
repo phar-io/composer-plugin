@@ -1,5 +1,4 @@
 <?php
-
 namespace PharIo\Composer\Console;
 
 use Composer\Command\BaseCommand;
