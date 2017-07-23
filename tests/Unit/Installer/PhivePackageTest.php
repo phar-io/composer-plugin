@@ -1,5 +1,5 @@
 <?php
-namespace PharIo\Composer\Tests\Unit\Installer\Packages;
+namespace PharIo\Composer\Tests\Unit\Installer;
 
 use PharIo\Composer\Installer\PhivePackage;
 
