@@ -14,7 +14,7 @@ class InstallerTest extends \PHPUnit_Framework_TestCase {
         $composerIO = new ConsoleIO(new ArrayInput([]), new ConsoleOutput, new HelperSet);
 
         $installer = new Installer(\Composer\Factory::create($composerIO), $composerIO);
-        $installer->install(new Configuration);
+        $installer->install(new Configuration([]));
 
         $this->assertFileExists(__DIR__ . '/../../../bin/phive.phar');
         $this->assertFileExists(__DIR__ . '/../../../bin/phive.phar.asc');
