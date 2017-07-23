@@ -22,6 +22,6 @@ class PhiveSignaturePackage extends Package implements PhivePackageInterface {
     }
 
     public function getInstallationPath() {
-        return realpath(__DIR__ . '/../../bin/' . basename($this->getDistUrl()));
+        return __DIR__ . '/../../bin/' . basename($this->getDistUrl());
     }
 }
