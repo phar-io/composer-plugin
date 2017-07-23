@@ -37,6 +37,12 @@
       "PharIo\\Composer\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "PharIo\\Composer\\": "src/",
+      "PharIo\\Composer\\Tests\\": "tests/"
+    }
+  },
   "extra": {
     "class": "PharIo\\Composer\\Plugin"
   },
