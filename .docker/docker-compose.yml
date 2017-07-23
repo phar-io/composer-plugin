@@ -1,0 +1,28 @@
+version: '2'
+services:
+
+  composer:
+    build: ./composer
+    container_name: phive-composer
+    volumes:
+      - ./composer/home:/composer
+    volumes_from:
+      - plugin
+    depends_on:
+      - plugin
+    working_dir: /app
+
+  plugin:
+    build: ./plugin
+    container_name: phive-plugin
+    volumes:
+      - ./..:/app
+    working_dir: /app
+
+  phpstan:
+    image: phpstan/phpstan
+    depends_on:
+      - plugin
+    volumes_from:
+      - plugin
+    working_dir: /app
