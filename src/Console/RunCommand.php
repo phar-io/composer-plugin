@@ -22,10 +22,6 @@ EOT
     protected function execute(InputInterface $input, OutputInterface $output) {
         $phiveBinary = new PhiveBinary;
 
-        if (false === $phiveBinary->exists()) {
-            return $output->writeln('@todo');
-        }
-
         $argv = $_SERVER['argv'];
         array_shift($argv);
 
