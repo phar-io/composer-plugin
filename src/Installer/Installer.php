@@ -6,6 +6,8 @@ use Composer\IO\IOInterface;
 use Composer\Util\Filesystem;
 use Composer\Util\Silencer;
 use PharIo\Composer\Common\GPGBinaryException;
+use PharIo\FileSystem\File;
+use PharIo\FileSystem\Filename;
 use Symfony\Component\Process\ExecutableFinder;
 
 class Installer {
@@ -31,6 +33,8 @@ class Installer {
 
     /**
      * @param Configuration $configuration
+     *
+     * @return int
      */
     public function install(Configuration $configuration) {
         $fileDownloader = $this->composer->getDownloadManager()->getDownloader('file');
@@ -40,13 +44,15 @@ class Installer {
         $signaturePackage = new PhiveSignaturePackage;
 
         try {
-            $gpgBinary = $configuration->getGPGBinaryPath();
+            $gpgBinaryPath = $configuration->getGPGBinaryPath();
 
-            if (null === $gpgBinary) {
-                $gpgBinary = (new ExecutableFinder)->find('gpg');
+            if (null === $gpgBinaryPath) {
+                $gpgBinaryPath = (new ExecutableFinder)->find('gpg');
             }
 
-            if (null === $gpgBinary) {
+            $gpgBinary = new Filename($gpgBinaryPath);
+
+            if (false === $gpgBinary->exists()) {
                 throw GPGBinaryException::notFound();
             }
 
@@ -63,7 +69,6 @@ class Installer {
 
             $this->io->write('<info>GPG Verification successful!</info>');
 
-            // @todo differentiate exceptions
         } catch (\Exception $exception) {
             Silencer::call('unlink', $phivePackage->getInstallationPath());
             Silencer::call('unlink', $signaturePackage->getInstallationPath());
