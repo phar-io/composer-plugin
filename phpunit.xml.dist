@@ -2,8 +2,15 @@
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
          verbose="true"
-         bootstrap="vendor/autoload.php"
-         forceCoversAnnotation="true">
+         bootstrap="vendor/autoload.php">
+
+    <logging>
+        <log
+            type="coverage-text"
+            target="php://stdout"
+            showOnlySummary="true"
+        />
+    </logging>
 
     <testsuites>
         <testsuite name="unit">
@@ -15,7 +22,7 @@
     </testsuites>
 
     <filter>
-        <whitelist addUncoveredFilesFromWhitelist="true">
+        <whitelist>
             <directory suffix=".php">src</directory>
         </whitelist>
     </filter>
