@@ -78,7 +78,7 @@ class Installer {
         }
 
         $this->io->write('');
-        $this->io->write('    <comment>You can now run phive via "composer phive:run"!</comment>');
+        $this->io->write('    <comment>You can now run Phive via "composer phive:run"!</comment>');
         return 0;
     }
 }

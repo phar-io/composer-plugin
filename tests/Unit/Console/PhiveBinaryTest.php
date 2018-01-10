@@ -17,12 +17,4 @@ class PhiveBinaryTest extends \PHPUnit_Framework_TestCase {
 
         $this->assertNull($exception);
     }
-
-    /**
-     * @expectedException \PharIo\Composer\Common\PhiveBinaryException
-     */
-    public function testAnExceptionAreThrownIfBinaryPathNotExist()
-    {
-        $phiveBinary = new PhiveBinary('/foo');
-    }
 }

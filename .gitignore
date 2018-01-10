@@ -3,3 +3,4 @@ bin/*
 vendor/
 phive.xml
 composer.lock
+.docker/composer/home/cache

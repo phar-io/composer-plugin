@@ -8,7 +8,7 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Helper\HelperSet;
 use PharIo\Composer\Installer\Installer;
 
-class InstallerTest extends \PHPUnit_Framework_TestCase {
+final class InstallerTest extends \PHPUnit_Framework_TestCase {
 
     public function testCanDownloadPhivePackageAndSignature() {
         $composerIO = new ConsoleIO(new ArrayInput([]), new ConsoleOutput, new HelperSet);

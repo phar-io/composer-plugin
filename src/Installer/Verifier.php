@@ -9,16 +9,13 @@ use PharIo\GnuPG\Factory;
 class Verifier {
 
     /**
-     * @var \Gnupg
+     * @var \PharIo\GnuPG\GnuPG
      */
     private $gpg;
 
     /**
      * @param Filename $gpgBinary
      * @param string   $homeDirectory
-     *
-     * @throws \InvalidArgumentException
-     * @throws DirectoryException
      */
     public function __construct(Filename $gpgBinary, $homeDirectory) {
         $factory = new Factory($gpgBinary);
@@ -31,7 +28,10 @@ class Verifier {
      * @throws \RuntimeException
      */
     public function importKey($key) {
-        if (false === $this->gpg->import($key)) {
+        $result = $this->gpg->import($key);
+
+        // when imported is 0 but fingerprint is available the key are already imported/exist
+        if (0 === $result['imported'] && !isset($result['fingerprint'])) {
             throw new \RuntimeException('Could not import needed GPG key!');
         }
     }

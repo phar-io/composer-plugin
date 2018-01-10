@@ -1,7 +1,8 @@
 {
   "name" : "phar-io/composer-plugin",
   "type": "composer-plugin",
-  "description": "",
+  "description": "This Composer plugin integrates Phive.",
+  "homepage": "https://phar.io/",
   "license" : "BSD-3-Clause",
   "authors" : [
     {
@@ -27,10 +28,12 @@
   "require": {
     "php" : ">=5.6.0",
     "composer-plugin-api": "^1.0",
-    "phar-io/gnupg": "dev-master"
+    "phar-io/gnupg": "dev-master",
+    "phar-io/filesystem": "dev-master",
+    "phar-io/executor": "dev-master"
   },
   "require-dev": {
-    "composer/composer": "1.3.*"
+    "composer/composer": "~1.3"
   },
   "autoload": {
     "psr-4": {
