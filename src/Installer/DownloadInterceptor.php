@@ -35,7 +35,7 @@ class DownloadInterceptor {
      * @param PhivePackageInterface $package
      */
     public function download(PhivePackageInterface $package) {
-        $tmpFile = $this->downloader->download($package, sys_get_temp_dir());
+        $tmpFile = $this->downloader->download($package, sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'phive');
         $this->filesystem->rename($tmpFile, $package->getInstallationPath());
 
         Silencer::call('chmod', $package->getInstallationPath(), 0777 & ~umask());
