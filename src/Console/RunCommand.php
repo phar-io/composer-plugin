@@ -32,8 +32,15 @@ EOT
 
         $argv = $_SERVER['argv'];
         array_shift($argv);
+        array_map('escapeshellarg', $argv);
 
-        $parameters = implode(' ', array_diff($argv, [$this->getName()]));
-        passthru(sprintf('%s %s', $phiveBinary, $parameters));
+        $ansiOption = $this->getAnsiOption($argv);
+
+        $parameters = array_diff($argv, [$this->getName(), '--ansi', '--no-ansi']);
+        passthru(sprintf('%s %s', $phiveBinary, implode(' ', $parameters) . $ansiOption));
+    }
+
+    private function getAnsiOption(array $arguments) {
+        return preg_match('/--(no-)?ansi/', implode(' ', $arguments)) ? '' : '--ansi ';
     }
 }
