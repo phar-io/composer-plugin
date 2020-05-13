@@ -28,9 +28,9 @@
   "require": {
     "php" : ">=5.6.0",
     "composer-plugin-api": "^1.0",
-    "phar-io/gnupg": "dev-master",
-    "phar-io/filesystem": "dev-master",
-    "phar-io/executor": "dev-master"
+    "phar-io/gnupg": "^0.9",
+    "phar-io/filesystem": "^0.9",
+    "phar-io/executor": "^0.9"
   },
   "require-dev": {
     "composer/composer": "~1.3"
