@@ -37,7 +37,7 @@ EOT
         $ansiOption = $this->getAnsiOption($argv);
 
         $parameters = array_diff($argv, [$this->getName(), '--ansi', '--no-ansi']);
-        passthru(sprintf('%s %s', $phiveBinary, implode(' ', $parameters) . $ansiOption));
+        passthru(sprintf('%s %s %s', $phiveBinary, implode(' ', $parameters), $ansiOption));
     }
 
     private function getAnsiOption(array $arguments) {
